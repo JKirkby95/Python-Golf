@@ -14,8 +14,9 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Python-Golf-Leaderboard')
 
-three_hole = SHEET.worksheet('3-Hole')
-
+three_hole = SHEET.worksheet('3-Hole') 
+six_hole = SHEET.worksheet('6-Hole')
+nine_hole = SHEET.worksheet('9-Hole')
 
 def get_name():
     """
@@ -25,20 +26,17 @@ def get_name():
 
     return name
 
-
 def tee_shot():
     """
     This function determines the outcome of your tee shot
     """
     outcome = random.choices(
-        # Possible outcomes: 1, 2, 3, 4
         ["good_tee", "rough_tee", "great_tee", "hazard_tee"],
         [0.4, 0.4, 0.1, 0.1],   # Probabilities for each outcome
-        k=1                      # Number of selections to make (1 shot)
+        k=1                      
     )[0]
     time.sleep(1)
     return outcome
-
 
 def approach_shot():
     """
@@ -46,27 +44,36 @@ def approach_shot():
     """
     outcome = random.choices(
         ["good_approach", "rough_approach", "great_approach",
-            "hazard_approach"],           # Possible outcomes: 1, 2, 3, 4
+            "hazard_approach"],           
         [0.4, 0.4, 0.1, 0.1],   # Probabilities for each outcome
-        k=1                      # Number of selections to make (1 shot)
+        k=1                      
     )[0]
     time.sleep(1)
     return outcome
-
 
 def putter_shot():
     """
     this function determines the outcome of your short shot
     """
     outcome = random.choices(
-        # Possible outcomes: 1, 2, 3, 4
         ["good_putt", "poor_putt", "in_the_hole"],
         [0.50, 0.20, 0.30],   # Probabilities for each outcome
-        k=1                      # Number of selections to make (1 shot)
+        k=1                      
     )[0]
     time.sleep(1)
     return outcome
 
+def short_putt():
+    """
+    this function determines the outcome of your short putt
+    """
+    outcome = random.choices(
+        ["tap_in", "lip_out"],
+        [0.95, 0.05],   # Probabilities for each outcome
+        k=1                     
+    )[0]
+    time.sleep(1)
+    return outcome
 
 def swing_message():
     """
@@ -74,7 +81,6 @@ def swing_message():
     """
     print("Swinging the club....\n")
     print("The ball is in the air....\n")
-
 
 def putt_message():
     """
@@ -97,7 +103,7 @@ def main():
     """
     This function runs the game and displays the outcome of the shots
     """
-
+    global total_score
     player_name = get_name()
     print(f"Hello {player_name}, welcome to Python Golf!\n")
 
@@ -108,7 +114,8 @@ def main():
         total_holes = int(
             input("How many holes do you want to play? (3, 6, or 9): "))
 
-    scores = {} #List of scores for each hole
+    scores = {}  #List of scores for each hole
+    total_score = 0  #Total score for the player
 
     for hole_number in range(1, total_holes + 1):
         print(f"\n--- Hole {hole_number} ---\n")
@@ -121,16 +128,16 @@ def main():
 
         if shot_outcome == "good_tee":
             print("You hit a good tee shot! Safely down the middle of the fairway.\n")
-            score = + 1
+            score += 1
         elif shot_outcome == "rough_tee":
             print("Your shot is in the rough.\n")
-            score = + 1
+            score += 1
         elif shot_outcome == "great_tee":
             print("Wow! A great shot!\n")
-            score = + 1
+            score += 1
         else:
             print("Uh-oh! Your shot landed in a hazard!\n")
-            score = + 2
+            score += 2
 
         input("Press Enter to hit the approach shot...\n")
         swing_message()
@@ -162,8 +169,23 @@ def main():
         elif putt_outcome == "in_the_hole":
             print("In the hole! Great putt.\n")
             score += 1
+            scores[f"Your score on hole {hole_number} "] = score
+            print(f"Your score on Hole {hole_number}: {score}")
+            continue  
 
-        scores[f"Your score on hole {hole_number} ] = score
+        input("Press Enter to hit your short putt...\n")
+        putt_message()
+        tap_in_outcome = short_putt()
+
+        if tap_in_outcome == "tap_in":
+            print("Well done you got it in the hole!\n")
+            score += 1
+        else:
+            print("Oh no... Your putt just missed\n")
+            print("I'll give you that one no need to hit this shot")
+            score += 2
+            
+        scores[f"Your score on hole {hole_number} "] = score
 
         print(f"Your score on Hole {hole_number}: {score}")
 
@@ -171,15 +193,13 @@ def main():
 
     print(f"\n--- Game Summary ---")
     print(f"Player Name: {player_name}")
-    print("Hole-wise Scores:")
+    print("Hole Scores:")
     for hole, score in scores.items():
         print(f"{hole}: {score}")
     print(f"Total Score: {total_score}")
 
     row_data = [player_name, total_score]
     three_hole.append_row(row_data)
-
-    
 
 if __name__ == "__main__":
     while True:

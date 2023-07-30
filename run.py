@@ -36,7 +36,7 @@ def tee_shot():
         [0.4, 0.4, 0.1, 0.1],   # Probabilities for each outcome
         k=1                      # Number of selections to make (1 shot)
     )[0]
-    time.sleep(2)
+    time.sleep(1)
     return outcome
 
 
@@ -50,7 +50,7 @@ def approach_shot():
         [0.4, 0.4, 0.1, 0.1],   # Probabilities for each outcome
         k=1                      # Number of selections to make (1 shot)
     )[0]
-    time.sleep(2)
+    time.sleep(1)
     return outcome
 
 
@@ -64,7 +64,7 @@ def putter_shot():
         [0.50, 0.20, 0.30],   # Probabilities for each outcome
         k=1                      # Number of selections to make (1 shot)
     )[0]
-    time.sleep(2)
+    time.sleep(1)
     return outcome
 
 
@@ -92,7 +92,7 @@ def play_again():
             return False
         else:
             print("Invalid response. Please enter 'yes' or 'no'.")
-            
+
 def main():
     """
     This function runs the game and displays the outcome of the shots

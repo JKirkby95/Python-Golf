@@ -83,7 +83,16 @@ def putt_message():
     print("Lining up the putt....\n")
     print("It's rolling towards the hole....\n")
 
-
+def play_again():
+    while True:
+        response = input("Would you like to play again? (yes/no): ").lower()
+        if response == "yes":
+            return True
+        elif response == "no":
+            return False
+        else:
+            print("Invalid response. Please enter 'yes' or 'no'.")
+            
 def main():
     """
     This function runs the game and displays the outcome of the shots
@@ -154,7 +163,7 @@ def main():
             print("In the hole! Great putt.\n")
             score += 1
 
-        scores[f"hole_{hole_number}_score"] = score
+        scores[f"Your score on hole {hole_number} ] = score
 
         print(f"Your score on Hole {hole_number}: {score}")
 

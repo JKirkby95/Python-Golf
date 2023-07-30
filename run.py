@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import random
+import time
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -26,11 +27,17 @@ def get_name():
     
 def tee_shot():
     outcome = random.choices(
-        [1, 2, 3, 4],           # Possible outcomes: 1, 2, 3, 4
+        ["good_tee", "rough_tee", "great_tee", "hazard_tee"],           # Possible outcomes: 1, 2, 3, 4
         [0.4, 0.4, 0.1, 0.1],   # Probabilities for each outcome
         k=1                      # Number of selections to make (1 shot)
     )[0]
+    time.sleep(2)
     return outcome
+
+def swing_message():
+    print("Swinging the club....")
+    print("")
+    print("The ball is in the air...")
 
 def main():
     score = 0
@@ -39,15 +46,16 @@ def main():
     print(f"Hello {player_name}, welcome to Python Golf!")
     input("Press Enter to hit the shot...")
 
+    swing_message()
     shot_outcome = tee_shot()
 
-    if shot_outcome == 1:
-        print("You hit a good shot!")
+    if shot_outcome == "good_tee":
+        print("You hit a good tee shot! Safely down the middle of the fairway.")
         score =+ 1
-    elif shot_outcome == 2:
+    elif shot_outcome == "rough_tee":
         print("Your shot is in the rough.")
         score =+ 1
-    elif shot_outcome == 3:
+    elif shot_outcome == "great_tee":
         print("Wow! A great shot!")
         score =+ 1
     else:

@@ -22,7 +22,7 @@ def get_name():
     """
     This function gets the players name
     """
-    name = input("What is your name? ")
+    name = input("What is your name? \n")
 
     return name
 
@@ -111,8 +111,6 @@ def main():
         input("How many holes do you want to play? (3, 6, or 9): "))
     while total_holes not in [3, 6, 9]:
         print("Invalid input. Please choose 3, 6, or 9 holes.")
-        total_holes = int(
-            input("How many holes do you want to play? (3, 6, or 9): "))
 
     scores = {}  #List of scores for each hole
     total_score = 0  #Total score for the player

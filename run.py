@@ -2,6 +2,10 @@ import gspread
 from google.oauth2.service_account import Credentials
 import random
 import time
+import colorama
+colorama.init()
+from colorama import Fore, Style
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -125,16 +129,16 @@ def main():
         shot_outcome = tee_shot()
 
         if shot_outcome == "good_tee":
-            print("You hit a good tee shot! Safely down the middle of the fairway.\n")
+            print(Fore.GREEN + "You hit a good tee shot! Safely down the middle of the fairway.\n" + Style.RESET_ALL)
             score += 1
         elif shot_outcome == "rough_tee":
-            print("Your shot is in the rough.\n")
+            print(Fore.RED + "Your shot is in the rough.\n" + Style.RESET_ALL)
             score += 1
         elif shot_outcome == "great_tee":
-            print("Wow! A great shot!\n")
+            print(Fore.GREEN  + "Wow! A great shot!\n" + Style.RESET_ALL)
             score += 1
         else:
-            print("Uh-oh! Your shot landed in a hazard!\n")
+            print(Fore.RED + "Uh-oh! Your shot landed in a hazard!\n" + Style.RESET_ALL)
             score += 2
 
         input("Press Enter to hit the approach shot...\n")
@@ -142,16 +146,16 @@ def main():
         approach_outcome = approach_shot()
 
         if approach_outcome == "good_approach":
-            print("You made a good approach shot! The ball is on the green.\n")
+            print(Fore.GREEN + "You made a good approach shot! The ball is on the green.\n" + Style.RESET_ALL)
             score += 1
         elif approach_outcome == "rough_approach":
-            print("Your approach shot is in the rough.\n")
+            print(Fore.RED + "Your approach shot is in the rough.\n" + Style.RESET_ALL)
             score += 1
         elif approach_outcome == "great_approach":
-            print("Amazing approach shot!\n")
+            print(Fore.GREEN + "Amazing approach shot!\n" + Style.RESET_ALL)
             score += 1
         else:
-            print("Oh no! Your approach shot ended up in a hazard!\n")
+            print(Fore.RED + "Oh no! Your approach shot ended up in a hazard!\n" + Style.RESET_ALL)
             score += 2
 
         input("Press Enter to hit your putt...\n")
@@ -159,13 +163,13 @@ def main():
         putt_outcome = putter_shot()
 
         if putt_outcome == "good_putt":
-            print("You made a good putt, you're 5 feet from the hole.\n")
+            print(Fore.GREEN + "You made a good putt, you're 5 feet from the hole.\n" + Style.RESET_ALL)
             score += 1
         elif putt_outcome == "poor_putt":
-            print("Poor putt.. you're still 10 feet from the hole.\n")
+            print(Fore.RED + "Poor putt.. you're still 10 feet from the hole.\n" + Style.RESET_ALL)
             score += 1
         elif putt_outcome == "in_the_hole":
-            print("In the hole! Great putt.\n")
+            print(Fore.GREEN + "In the hole! Great putt.\n") + Style.RESET_ALL
             score += 1
             scores[f"Your score on hole {hole_number} "] = score
             print(f"Your score on Hole {hole_number}: {score}")
@@ -176,11 +180,11 @@ def main():
         tap_in_outcome = short_putt()
 
         if tap_in_outcome == "tap_in":
-            print("Well done you got it in the hole!\n")
+            print(Fore.GREEN + "Well done you got it in the hole!\n" + Style.RESET_ALL)
             score += 1
         else:
-            print("Oh no... Your putt just missed\n")
-            print("I'll give you that one no need to hit this shot")
+            print(Fore.RED + "Oh no... Your putt just missed\n" + Style.RESET_ALL)
+            print(Fore.RED + "I'll give you that one no need to hit this shot" + Style.RESET_ALL)
             score += 2
             
         scores[f"Your score on hole {hole_number} "] = score

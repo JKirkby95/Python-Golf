@@ -86,6 +86,15 @@ def swing_message():
     """
     print("Swinging the club....\n")
     print("The ball is in the air....\n")
+    print( Fore.GREEN + """
+      \                   .  .                        |>>>
+       \              .         ' .                   |
+      O>>         .                 'o                |
+       \       .                                      |
+       /\    .                                        |
+      / /  .'                                         |
+   ^^^^^^^`^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""" + Style.RESET_ALL)
 
 def putt_message():
     """
@@ -93,6 +102,21 @@ def putt_message():
     """
     print("Lining up the putt....\n")
     print("It's rolling towards the hole....\n")
+    print(Fore.GREEN + '''
+                        |H|
+                        |H|
+                        |||
+                        |||
+                        |V|
+                        | |
+          .----=--.-':'-; <
+         /=====  /'.'.'.'\ |
+        |====== |.'.'.'.'.||             ___________
+         \=====  \'.'.'.'/ /          .o8888888888888o.
+          '--=-=-='-:.:-'-`           88888888888888888
+                                      `Y8888888888888P`
+                                        `"""""""""""`
+''' + Style.RESET_ALL)
 
 def play_again():
     while True:

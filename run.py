@@ -3,8 +3,9 @@ from google.oauth2.service_account import Credentials
 import random
 import time
 import colorama
-colorama.init()
 from colorama import Fore, Style
+colorama.init()
+
 
 
 SCOPE = [
@@ -169,7 +170,7 @@ def main():
             print(Fore.RED + "Poor putt.. you're still 10 feet from the hole.\n" + Style.RESET_ALL)
             score += 1
         elif putt_outcome == "in_the_hole":
-            print(Fore.GREEN + "In the hole! Great putt.\n") + Style.RESET_ALL
+            print(Fore.GREEN + "In the hole! Great putt.\n" + Style.RESET_ALL)
             score += 1
             scores[f"Your score on hole {hole_number} "] = score
             print(f"Your score on Hole {hole_number}: {score}")

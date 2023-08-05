@@ -35,11 +35,22 @@ def tee_shot():
     """
     This function determines the outcome of your tee shot
     """
-    outcome = random.choices(
-        ["good_tee", "rough_tee", "great_tee", "hazard_tee"],
-        [0.4, 0.4, 0.1, 0.1],   # Probabilities for each outcome
-        k=1                      
-    )[0]
+    choice = ""
+    while choice not in ["risky", "safe"]:
+        choice = input("Do you want to go for a risky shot or a safe shot? (risky/safe): \n").lower()
+    
+    if choice == "risky":
+        outcome = random.choices(
+            ["good_tee", "rough_tee", "great_tee", "hazard_tee"],
+            [0.3, 0.4, 0.2, 0.1],  # Adjusted probabilities for risky shot
+            k=1
+        )[0]
+    elif choice == "safe":
+        outcome = random.choices(
+            ["good_tee", "rough_tee", "great_tee", "hazard_tee"],
+            [0.4, 0.4, 0.1, 0.1],  # Adjusted probabilities for safe shot
+            k=1
+        )[0]
     time.sleep(1)
     return outcome
 
@@ -47,12 +58,22 @@ def approach_shot():
     """
     This function determines the outcome of your approach shot
     """
-    outcome = random.choices(
-        ["good_approach", "rough_approach", "great_approach",
-            "hazard_approach"],           
-        [0.4, 0.4, 0.1, 0.1],   # Probabilities for each outcome
-        k=1                      
-    )[0]
+    choice = ""
+    while choice not in ["risky", "safe"]:
+        choice = input("Do you want to go for a risky shot or a safe shot? (risky/safe): \n").lower()
+
+    if choice == "risky":
+        outcome = random.choices(
+            ["good_approach", "rough_approach", "great_approach","hazard_approach"],           
+            [0.1, 0.2, 0.35, 0.35],   # Probabilities for each outcome
+            k=1                      
+        )[0]
+    elif choice == "safe":
+        outcome = random.choices(
+            ["good_approach", "rough_approach", "great_approach","hazard_approach"],           
+            [0.5, 0.2, 0.2, 0.1],   # Probabilities for each outcome
+            k=1                    
+        )[0]
     time.sleep(1)
     return outcome
 
@@ -135,7 +156,7 @@ def main():
     global total_score
     player_name = get_name()
     print(f"Hello {player_name}, welcome to Python Golf!\n")
-    print("Python Golf is a simple game the rules are as follows...")
+    print(Fore.YELLOW +"Python Golf is a simple game the rules are as follows...\n")
     print("For tee shots and approach shots you can choose\n" +
      "to play a risky or a safe shot. Risky shots could be rewarded with\n" +
      "a great shot or possibly a penalty for entering the hazard.\n"
@@ -148,7 +169,7 @@ def main():
     print("At the end of each hole you will be informed of the score you got.\n")
     print("")
     print("And at the end of the game you will be told your final\n" +
-    "score and find a link to the leaderboard google sheet")
+    "score and find a link to the leaderboard google sheet.\n" + Style.RESET_ALL)
 
     total_holes = int(
         input("How many holes do you want to play? (3, 6, or 9): "))
@@ -161,11 +182,13 @@ def main():
     for hole_number in range(1, total_holes + 1):
         print(f"\n--- Hole {hole_number} ---\n")
 
+        shot_outcome = tee_shot()
+
         score = 0
         input("Press Enter to hit the shot...\n")
 
         swing_message()
-        shot_outcome = tee_shot()
+        
 
         if shot_outcome == "good_tee":
             print(Fore.GREEN + "You hit a good tee shot! Safely down the middle of the fairway.\n" + Style.RESET_ALL)
@@ -180,10 +203,11 @@ def main():
             print(Fore.RED + "Uh-oh! Your shot landed in a hazard!\n" + Style.RESET_ALL)
             score += 2
 
-        input("Press Enter to hit the approach shot...\n")
-        swing_message()
         approach_outcome = approach_shot()
 
+        input("Press Enter to hit the approach shot...\n")
+        swing_message()
+        
         if approach_outcome == "good_approach":
             print(Fore.GREEN + "You made a good approach shot! The ball is on the green.\n" + Style.RESET_ALL)
             score += 1

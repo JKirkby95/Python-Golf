@@ -135,6 +135,20 @@ def main():
     global total_score
     player_name = get_name()
     print(f"Hello {player_name}, welcome to Python Golf!\n")
+    print("Python Golf is a simple game the rules are as follows...")
+    print("For tee shots and approach shots you can choose\n" +
+     "to play a risky or a safe shot. Risky shots could be rewarded with\n" +
+     "a great shot or possibly a penalty for entering the hazard.\n"
+     )
+    print("")
+    print("If you enter a hazard you will receive a one shot penalty.\n")
+    print("")
+    print("On the green you are only permitted to use a putter.\n")
+    print("")
+    print("At the end of each hole you will be informed of the score you got.\n")
+    print("")
+    print("And at the end of the game you will be told your final\n" +
+    "score and find a link to the leaderboard google sheet")
 
     total_holes = int(
         input("How many holes do you want to play? (3, 6, or 9): "))

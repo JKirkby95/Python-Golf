@@ -172,7 +172,7 @@ def main():
     "score and find a link to the leaderboard google sheet.\n" + Style.RESET_ALL)
 
     total_holes = int(
-        input("How many holes do you want to play? (3, 6, or 9): "))
+        input("How many holes do you want to play? (3, 6, or 9): \n"))
     while total_holes not in [3, 6, 9]:
         print("Invalid input. Please choose 3, 6, or 9 holes.")
 

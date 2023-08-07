@@ -228,15 +228,21 @@ def main():
         + Style.RESET_ALL
         )
 
-    total_holes = int(
-        input("How many holes do you want to play? (3, 6, or 9): \n"))
-    while total_holes not in [3, 6, 9]:
-        print("Invalid input. Please choose 3, 6, or 9 holes.")
+    total_holes = ""
+        
+    while total_holes not in ["3", "6", "9"]:
+        total_holes = input(
+            "How many holes do you want to play? (3, 6, or 9): \n"
+        )
+        if total_holes not in ["3", "6", "9"]:
+            print("Invalid input. Please choose 3, 6, or 9 holes.\n")
+
+
 
     scores = {}  # List of scores for each hole
     total_score = 0  # Total score for the player
 
-    for hole_number in range(1, total_holes + 1):
+    for hole_number in range(1, int(total_holes) + 1):
         print(f"\n--- Hole {hole_number} ---\n")
 
         shot_outcome = tee_shot()

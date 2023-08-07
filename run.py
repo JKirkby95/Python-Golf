@@ -269,7 +269,12 @@ def main():
     print(f"Total Score: {total_score}")
 
     row_data = [player_name, total_score]
-    three_hole.append_row(row_data)
+    if total_holes == 3:
+        three_hole.append_row(row_data)
+    elif total_holes == 6:
+        six_hole.append_row(row_data)
+    elif total_holes == 9:
+        nine_hole.append_row(row_data)
 
 if __name__ == "__main__":
     while True:

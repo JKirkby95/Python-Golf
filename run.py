@@ -41,6 +41,8 @@ def tee_shot():
             "Select which club you'd like to use." +
             "(driver/iron): \n"
             ).lower()
+        if choice not in ["driver", "iron"]:
+            print("Invalid input please select driver or iron.\n")
 
     if choice == "driver":
         outcome = random.choices(
@@ -229,15 +231,13 @@ def main():
         )
 
     total_holes = ""
-        
+
     while total_holes not in ["3", "6", "9"]:
         total_holes = input(
             "How many holes do you want to play? (3, 6, or 9): \n"
         )
         if total_holes not in ["3", "6", "9"]:
             print("Invalid input. Please choose 3, 6, or 9 holes.\n")
-
-
 
     scores = {}  # List of scores for each hole
     total_score = 0  # Total score for the player

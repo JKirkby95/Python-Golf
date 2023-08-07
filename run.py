@@ -43,7 +43,7 @@ def tee_shot():
         choice = input(
             "Select which club you'd like to use." +
             "(driver/iron): \n"
-            ).lower()
+            )
         if choice not in ["driver", "iron"]:
             print("Invalid input please select driver or iron.\n")
 
@@ -71,8 +71,7 @@ def approach_shot():
     while choice not in ["wood", "iron"]:
         choice = input(
             "Select which club you'd like to use. (wood/iron): \n"
-            ).lower()
-
+            )
     if choice == "wood":
         outcome = random.choices(
             ["good_approach", "rough_approach",

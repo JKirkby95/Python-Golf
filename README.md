@@ -19,6 +19,11 @@ The leaderboard workbook can be viewed [here.](https://docs.google.com/spreadshe
 
 1. [User Experience](#user-experience)
     1. [Project Goals](#project-goals)
+    2. [User Stories](#user-stories)
+    3. [Data collection](#data-collection)
+2. [Features](#features)
+    1. [Title screen](title-screen)
+    2. [Rules](#rules)
 
 ## User Experience
 
@@ -35,3 +40,65 @@ The leaderboard workbook can be viewed [here.](https://docs.google.com/spreadshe
 - Use different color text to differentiate between good and bad shots / results.
 
 - Use ascii art to break up text and make it more fun.
+
+### User Stories
+
+- As a player, I want the game to have simple rules to follow.
+
+- As a player, I want the game to be interesting and entertaining.
+
+- As a player, I want the outcome of each shot to be clear to me.
+
+- As a player, I want the controls to be easy.
+
+- As a player, I want to be able to access a leaderboard.
+
+- As a player, I want to be shown a summary of my round.
+
+- As a player I want to be given the option to play again.
+
+### Data Collection
+
+![Leaderboard](assets/images/leaderboard.png)
+
+- For this project I decided a Google sheet would be a good idea to add,
+I learned a bit about this during the walkthrough and I wanted to test myself.
+
+- In the workbook I have seperate leaderboards for 3-hole , 6-hole and 9-hole competitions.
+
+- Once the user has finished the game the user name they entered along with their score is sent
+to the correct sheet.
+
+- I also used a script extension (see below) to order the leaderboards low - high as low score in golf wins.
+
+![Script](assets/images/sheet_script.png)
+
+## Features
+
+### Title Screen
+
+![title screen](assets/images/title.png)
+
+- The title screen just shows the name of the game, I used ascii art from [Patorjk.com](https://patorjk.com/) to create this.
+
+- The title screen remains for 5 seconds before the game begins.
+
+- After the 5 seconds the user will be asked to enter their name for the leaderboard.(see below)
+
+![name](assets/images/name.png)
+
+### Rules
+
+![rules](assets/images/rules.png)
+
+- The rules section starts with welcoming the player to the game.
+
+- It then follows on with the rules of the game, I tried to make these
+eay to understand as I know not everyone is familiar with the rules of golf.
+
+- It outlines the club choice the user will have to make and explains 
+what each choice does and how it could affect their score.
+
+- Also explains the rule for the penalty applied when you enter a hazard.
+As this is slighty different to how a real game of golf would go.
+

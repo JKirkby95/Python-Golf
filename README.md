@@ -10,3 +10,27 @@ This game is like an adventure game but with a competitive twist, the users scor
 are sent to a Google sheet to display the current leaderboard.
 As a golfer myself I wanted to make something that interested me and I could
 share with my friends and see who could get the best score.
+
+The deployed project can be viewed [here.](https://python-golf-7c3c839b8f7b.herokuapp.com/)
+The leaderboard workbook can be viewed [here.](https://docs.google.com/spreadsheets/d/1_881-aBxzA8TwstEB7xGB9ZpJzDYFXvt9tCD4hYbZWU/edit#gid=0)
+
+## Table of Contents
+
+1. [User Experience](#user-experience)
+    1. [Project Goals](#project-goals)
+
+## User Experience
+
+### Project Goals
+
+- Make a fun interactive golf game.
+
+- Store data in a google sheet.
+
+- Add some user options to make the game more interesting.
+
+- Have a leaderboard to make it more competitive.
+
+- Use different color text to differentiate between good and bad shots / results.
+
+- Use ascii art to break up text and make it more fun.

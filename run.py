@@ -6,8 +6,6 @@ import colorama
 from colorama import Fore, Style
 colorama.init()
 
-
-
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -19,9 +17,10 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Python-Golf-Leaderboard')
 
-three_hole = SHEET.worksheet('3-Hole') 
+three_hole = SHEET.worksheet('3-Hole')
 six_hole = SHEET.worksheet('6-Hole')
 nine_hole = SHEET.worksheet('9-Hole')
+
 
 def get_name():
     """
@@ -31,14 +30,18 @@ def get_name():
 
     return name
 
+
 def tee_shot():
     """
     This function determines the outcome of your tee shot
     """
     choice = ""
     while choice not in ["driver", "iron"]:
-        choice = input("Select which club you'd like to use. (driver/iron): \n").lower()
-    
+        choice = input(
+            "Select which club you'd like to use." +
+            "(driver/iron): \n"
+            ).lower()
+
     if choice == "driver":
         outcome = random.choices(
             ["good_tee", "rough_tee", "great_tee", "hazard_tee"],
@@ -54,28 +57,34 @@ def tee_shot():
     time.sleep(1)
     return outcome
 
+
 def approach_shot():
     """
     This function determines the outcome of your approach shot
     """
     choice = ""
     while choice not in ["wood", "iron"]:
-        choice = input("Select which club you'd like to use. (wood/iron): \n").lower()
+        choice = input(
+            "Select which club you'd like to use. (wood/iron): \n"
+            ).lower()
 
     if choice == "wood":
         outcome = random.choices(
-            ["good_approach", "rough_approach", "great_approach","hazard_approach"],           
+            ["good_approach", "rough_approach",
+             "great_approach", "hazard_approach"],
             [0.1, 0.2, 0.35, 0.35],   # Probabilities for each outcome
-            k=1                      
+            k=1
         )[0]
     elif choice == "iron":
         outcome = random.choices(
-            ["good_approach", "rough_approach", "great_approach","hazard_approach"],           
+            ["good_approach", "rough_approach",
+             "great_approach", "hazard_approach"],
             [0.5, 0.2, 0.2, 0.1],   # Probabilities for each outcome
-            k=1                    
+            k=1
         )[0]
     time.sleep(1)
     return outcome
+
 
 def putter_shot():
     """
@@ -84,10 +93,11 @@ def putter_shot():
     outcome = random.choices(
         ["good_putt", "poor_putt", "in_the_hole"],
         [0.50, 0.20, 0.30],   # Probabilities for each outcome
-        k=1                      
+        k=1
     )[0]
     time.sleep(1)
     return outcome
+
 
 def short_putt():
     """
@@ -96,10 +106,11 @@ def short_putt():
     outcome = random.choices(
         ["tap_in", "lip_out"],
         [0.95, 0.05],   # Probabilities for each outcome
-        k=1                     
+        k=1
     )[0]
     time.sleep(1)
     return outcome
+
 
 def swing_message():
     """
@@ -107,15 +118,18 @@ def swing_message():
     """
     print("Swinging the club....\n")
     print("The ball is in the air....\n")
-    print( Fore.GREEN + """
-      \                   .  .                        |>>>
-       \              .         ' .                   |
-      O>>         .                 'o                |
-       \       .                                      |
-       /\    .                                        |
-      / /  .'                                         |
-   ^^^^^^^`^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-""" + Style.RESET_ALL)
+
+    ascii_art1 = Fore.GREEN + r"""
+       \                   .  .                        |>>>
+        \              .         ' .                   |
+        O>>         .                 'o               |
+        \       .                                      |
+        /\    .                                        |
+       / /  .'                                         |
+    ^^^^^^^`^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    """ + Style.RESET_ALL
+    print(ascii_art1)
+
 
 def putt_message():
     """
@@ -123,7 +137,7 @@ def putt_message():
     """
     print("Lining up the putt....\n")
     print("It's rolling towards the hole....\n")
-    print(Fore.GREEN + '''
+    ascii_art2 = Fore.GREEN + r'''
                         |H|
                         |H|
                         |||
@@ -133,21 +147,28 @@ def putt_message():
           .----=--.-':'-; <
          /=====  /'.'.'.'\ |
         |====== |.'.'.'.'.||             ___________
-         \=====  \'.'.'.'/ /           .o8888888888888o.
+         \=====  \'.'.'.'/ /          .o8888888888888o.
           '--=-=-='-:.:-'-`           88888888888888888
                                       `Y8888888888888P`
                                         `"""""""""""`
-''' + Style.RESET_ALL)
+        ''' + Style.RESET_ALL
+    print(ascii_art2)
+
 
 def play_again():
     while True:
-        response = input("Would you like to play again? (yes/no): ").lower()
+        response = input(
+            "Would you like to play again? (yes/no): "
+            ).lower()
         if response == "yes":
             return True
         elif response == "no":
             return False
         else:
-            print("Invalid response. Please enter 'yes' or 'no'.")
+            print(
+                "Invalid response. Please enter 'yes' or 'no'."
+                )
+
 
 def main():
     """
@@ -156,33 +177,50 @@ def main():
     global total_score
     player_name = get_name()
     print(f"Hello {player_name}, welcome to Python Golf!\n")
-    print(Fore.YELLOW +"Python Golf is a simple game the rules are as follows...\n")
-    print("For tee shots you can choose to play a driver\n" +
-     "or a safer iron shot. Driver shots could be rewarded with\n" +
-     "a great shot but also have a higher probability of entering a hazard.\n")
+    print(
+        Fore.YELLOW +
+        "Python Golf is a simple game the rules are as follows...\n"
+        )
+    print(
+        "For tee shots you can choose to play a driver\n" +
+        "or a safer iron shot. Driver shots could be rewarded with\n" +
+        "a great shot but also have a higher probability" +
+        "of entering a hazard.\n"
+     )
     print("")
-    print("For approach shots you can choose between\n" +
-    "a wood or an iron. The wood is like a driver it gives\n" +
-    "a higher probability of a great shot but also gives\n" +
-    "a higher probability of entering a hazard\n")
+    print(
+        "For approach shots you can choose between\n" +
+        "a wood or an iron. The wood is like a driver it gives\n" +
+        "a higher probability of a great shot but also gives\n" +
+        "a higher probability of entering a hazard\n"
+    )
     print("")
-    print("If you enter a hazard you will receive a one shot penalty.\n")
+    print(
+        "If you enter a hazard you will receive a one shot penalty.\n"
+        )
     print("")
-    print("On the green you are only permitted to use a putter \n" +
-    "so there is no choice of clubs there.\n")
+    print(
+        "On the green you are only permitted to use a putter \n" +
+        "so there is no choice of clubs there.\n"
+    )
     print("")
-    print("At the end of each hole you will be informed of the score you got.\n")
+    print(
+        "At the end of each hole you will be informed of the score you got.\n"
+        )
     print("")
-    print("And at the end of the game you will be told your final\n" +
-    "score and find a link to the leaderboard google sheet.\n" + Style.RESET_ALL)
+    print(
+        "And at the end of the game you will be told your final\n" +
+        "score and find a link to the leaderboard google sheet.\n"
+        + Style.RESET_ALL
+        )
 
     total_holes = int(
         input("How many holes do you want to play? (3, 6, or 9): \n"))
     while total_holes not in [3, 6, 9]:
         print("Invalid input. Please choose 3, 6, or 9 holes.")
 
-    scores = {}  #List of scores for each hole
-    total_score = 0  #Total score for the player
+    scores = {}  # List of scores for each hole
+    total_score = 0  # Total score for the player
 
     for hole_number in range(1, total_holes + 1):
         print(f"\n--- Hole {hole_number} ---\n")
@@ -193,37 +231,70 @@ def main():
         input("Press Enter to hit the shot...\n")
 
         swing_message()
-        
 
         if shot_outcome == "good_tee":
-            print(Fore.GREEN + "You hit a good tee shot! Safely down the middle of the fairway.\n" + Style.RESET_ALL)
+            print(
+                Fore.GREEN +
+                "You hit a good tee shot!" +
+                "Safely down the middle of the fairway.\n"
+                + Style.RESET_ALL
+                )
             score += 1
         elif shot_outcome == "rough_tee":
-            print(Fore.RED + "Your shot is in the rough.\n" + Style.RESET_ALL)
+            print(
+                Fore.RED +
+                "Your shot is in the rough.\n"
+                + Style.RESET_ALL
+                )
             score += 1
         elif shot_outcome == "great_tee":
-            print(Fore.GREEN  + "Wow! A great shot!\n" + Style.RESET_ALL)
+            print(
+                Fore.GREEN +
+                "Wow! A great shot!\n"
+                + Style.RESET_ALL
+                )
             score += 1
         else:
-            print(Fore.RED + "Uh-oh! Your shot landed in a hazard!\n" + Style.RESET_ALL)
+            print(
+                Fore.RED +
+                "Uh-oh! Your shot landed in a hazard!\n"
+                + Style.RESET_ALL
+                )
             score += 2
 
         approach_outcome = approach_shot()
 
         input("Press Enter to hit the approach shot...\n")
         swing_message()
-        
+
         if approach_outcome == "good_approach":
-            print(Fore.GREEN + "You made a good approach shot! The ball is on the green.\n" + Style.RESET_ALL)
+            print(
+                Fore.GREEN +
+                "You made a good approach shot! The ball is on the green.\n"
+                + Style.RESET_ALL
+            )
             score += 1
         elif approach_outcome == "rough_approach":
-            print(Fore.RED + "Your approach shot is in the rough.\n" + Style.RESET_ALL)
+            print(
+                Fore.RED +
+                "Your approach shot is in the rough.\n"
+                + Style.RESET_ALL
+            )
             score += 1
         elif approach_outcome == "great_approach":
-            print(Fore.GREEN + "Amazing approach shot!\n" + Style.RESET_ALL)
+            print(
+                Fore.GREEN +
+                "Amazing approach shot!\n"
+                + Style.RESET_ALL
+            )
             score += 1
         else:
-            print(Fore.RED + "Oh no! Your approach shot ended up in a hazard!\n" + Style.RESET_ALL)
+            print(
+                Fore.RED +
+                "Oh no! Your approach shot ended up in a hazard!\n"
+                + Style.RESET_ALL
+            )
+
             score += 2
 
         input("Press Enter to hit your putt...\n")
@@ -231,30 +302,54 @@ def main():
         putt_outcome = putter_shot()
 
         if putt_outcome == "good_putt":
-            print(Fore.GREEN + "You made a good putt, you're 5 feet from the hole.\n" + Style.RESET_ALL)
+            print(
+                Fore.GREEN +
+                "You made a good putt, you're 5 feet from the hole.\n"
+                + Style.RESET_ALL
+            )
             score += 1
         elif putt_outcome == "poor_putt":
-            print(Fore.RED + "Poor putt.. you're still 10 feet from the hole.\n" + Style.RESET_ALL)
+            print(
+                Fore.RED +
+                "Poor putt.. you're still 10 feet from the hole.\n"
+                + Style.RESET_ALL
+            )
             score += 1
         elif putt_outcome == "in_the_hole":
-            print(Fore.GREEN + "In the hole! Great putt.\n" + Style.RESET_ALL)
+            print(
+                Fore.GREEN +
+                "In the hole! Great putt.\n"
+                + Style.RESET_ALL
+            )
             score += 1
             scores[f"Your score on hole {hole_number} "] = score
             print(f"Your score on Hole {hole_number}: {score}")
-            continue  
+            continue
 
         input("Press Enter to hit your short putt...\n")
         putt_message()
         tap_in_outcome = short_putt()
 
         if tap_in_outcome == "tap_in":
-            print(Fore.GREEN + "Well done you got it in the hole!\n" + Style.RESET_ALL)
+            print(
+                Fore.GREEN +
+                "Well done you got it in the hole!\n"
+                + Style.RESET_ALL
+            )
             score += 1
         else:
-            print(Fore.RED + "Oh no... Your putt just missed\n" + Style.RESET_ALL)
-            print(Fore.RED + "I'll give you that one no need to hit this shot" + Style.RESET_ALL)
+            print(
+                Fore.RED +
+                "Oh no... Your putt just missed\n"
+                + Style.RESET_ALL
+            )
+            print(
+                Fore.RED +
+                "I'll give you that one no need to hit this shot"
+                + Style.RESET_ALL
+            )
             score += 2
-            
+
         scores[f"Your score on hole {hole_number} "] = score
 
         print(f"Your score on Hole {hole_number}: {score}")
@@ -275,6 +370,7 @@ def main():
         six_hole.append_row(row_data)
     elif total_holes == 9:
         nine_hole.append_row(row_data)
+
 
 if __name__ == "__main__":
     while True:

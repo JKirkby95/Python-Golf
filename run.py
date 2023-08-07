@@ -36,19 +36,19 @@ def tee_shot():
     This function determines the outcome of your tee shot
     """
     choice = ""
-    while choice not in ["risky", "safe"]:
-        choice = input("Do you want to go for a risky shot or a safe shot? (risky/safe): \n").lower()
+    while choice not in ["driver", "iron"]:
+        choice = input("Select which club you'd like to use. (driver/iron): \n").lower()
     
-    if choice == "risky":
+    if choice == "driver":
         outcome = random.choices(
             ["good_tee", "rough_tee", "great_tee", "hazard_tee"],
-            [0.3, 0.4, 0.2, 0.1],  # Adjusted probabilities for risky shot
+            [0.3, 0.4, 0.2, 0.1],  # Adjusted probabilities for a driver shot
             k=1
         )[0]
-    elif choice == "safe":
+    elif choice == "iron":
         outcome = random.choices(
             ["good_tee", "rough_tee", "great_tee", "hazard_tee"],
-            [0.4, 0.4, 0.1, 0.1],  # Adjusted probabilities for safe shot
+            [0.4, 0.4, 0.1, 0.1],  # Adjusted probabilities for an iron shot.
             k=1
         )[0]
     time.sleep(1)
@@ -59,16 +59,16 @@ def approach_shot():
     This function determines the outcome of your approach shot
     """
     choice = ""
-    while choice not in ["risky", "safe"]:
-        choice = input("Do you want to go for a risky shot or a safe shot? (risky/safe): \n").lower()
+    while choice not in ["wood", "iron"]:
+        choice = input("Select which club you'd like to use. (wood/iron): \n").lower()
 
-    if choice == "risky":
+    if choice == "wood":
         outcome = random.choices(
             ["good_approach", "rough_approach", "great_approach","hazard_approach"],           
             [0.1, 0.2, 0.35, 0.35],   # Probabilities for each outcome
             k=1                      
         )[0]
-    elif choice == "safe":
+    elif choice == "iron":
         outcome = random.choices(
             ["good_approach", "rough_approach", "great_approach","hazard_approach"],           
             [0.5, 0.2, 0.2, 0.1],   # Probabilities for each outcome
@@ -133,7 +133,7 @@ def putt_message():
           .----=--.-':'-; <
          /=====  /'.'.'.'\ |
         |====== |.'.'.'.'.||             ___________
-         \=====  \'.'.'.'/ /          .o8888888888888o.
+         \=====  \'.'.'.'/ /           .o8888888888888o.
           '--=-=-='-:.:-'-`           88888888888888888
                                       `Y8888888888888P`
                                         `"""""""""""`
@@ -157,14 +157,19 @@ def main():
     player_name = get_name()
     print(f"Hello {player_name}, welcome to Python Golf!\n")
     print(Fore.YELLOW +"Python Golf is a simple game the rules are as follows...\n")
-    print("For tee shots and approach shots you can choose\n" +
-     "to play a risky or a safe shot. Risky shots could be rewarded with\n" +
-     "a great shot or possibly a penalty for entering the hazard.\n"
-     )
+    print("For tee shots you can choose to play a driver\n" +
+     "or a safer iron shot. Driver shots could be rewarded with\n" +
+     "a great shot but also have a higher probability of entering a hazard.\n")
+    print("")
+    print("For approach shots you can choose between\n" +
+    "a wood or an iron. The wood is like a driver it gives\n" +
+    "a higher probability of a great shot but also gives\n" +
+    "a higher probability of entering a hazard\n")
     print("")
     print("If you enter a hazard you will receive a one shot penalty.\n")
     print("")
-    print("On the green you are only permitted to use a putter.\n")
+    print("On the green you are only permitted to use a putter \n" +
+    "so there is no choice of clubs there.\n")
     print("")
     print("At the end of each hole you will be informed of the score you got.\n")
     print("")

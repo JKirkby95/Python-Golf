@@ -24,11 +24,14 @@ nine_hole = SHEET.worksheet('9-Hole')
 
 def get_name():
     """
-    This function gets the players name
+    This function gets the players name for the leaderboard
     """
-    name = input("What is your name? \n")
-
-    return name
+    while True:
+        name = input("Please enter a user name for our leaderboard.\n")
+        if name:
+            return name
+        else:
+            print("Please enter a name, can't be blank.\n")
 
 
 def tee_shot():
@@ -195,20 +198,20 @@ def main():
     print(f"Hello {player_name}, welcome to Python Golf!\n")
     print(
         Fore.YELLOW +
-        "Python Golf is a simple game the rules are as follows...\n"
+        "Python Golf is a simple game the rules are as follows... \n"
         )
     print(
-        "For tee shots you can choose to play a driver\n" +
-        "or a safer iron shot. Driver shots could be rewarded with\n" +
-        "a great shot but also have a higher probability" +
+        "For tee shots you can choose to play a driver \n" +
+        "or a safer iron shot. Driver shots could be rewarded with \n" +
+        "a great shot but also have a higher probability " +
         "of entering a hazard.\n"
      )
     print("")
     print(
-        "For approach shots you can choose between\n" +
-        "a wood or an iron. The wood is like a driver it gives\n" +
-        "a higher probability of a great shot but also gives\n" +
-        "a higher probability of entering a hazard\n"
+        "For approach shots you can choose between \n" +
+        "a wood or an iron. The wood is like a driver it gives \n" +
+        "a higher probability of a great shot but also gives \n" +
+        "a higher probability of entering a hazard \n"
     )
     print("")
     print(
@@ -221,12 +224,12 @@ def main():
     )
     print("")
     print(
-        "At the end of each hole you will be informed of the score you got.\n"
+        "At the end of each hole you will be informed of the score you got. \n"
         )
     print("")
     print(
-        "And at the end of the game you will be told your final\n" +
-        "score and find a link to the leaderboard google sheet.\n"
+        "And at the end of the game you will be told your final \n" +
+        "score and find a link to the leaderboard google sheet. \n"
         + Style.RESET_ALL
         )
 
@@ -237,7 +240,7 @@ def main():
             "How many holes do you want to play? (3, 6, or 9): \n"
         )
         if total_holes not in ["3", "6", "9"]:
-            print("Invalid input. Please choose 3, 6, or 9 holes.\n")
+            print("Invalid input. Please choose 3, 6, or 9 holes. \n")
 
     scores = {}  # List of scores for each hole
     total_score = 0  # Total score for the player

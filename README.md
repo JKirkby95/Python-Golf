@@ -12,6 +12,7 @@ As a golfer myself I wanted to make something that interested me and I could
 share with my friends and see who could get the best score.
 
 The deployed project can be viewed [here.](https://python-golf-7c3c839b8f7b.herokuapp.com/)
+
 The leaderboard workbook can be viewed [here.](https://docs.google.com/spreadsheets/d/1_881-aBxzA8TwstEB7xGB9ZpJzDYFXvt9tCD4hYbZWU/edit#gid=0)
 
 ## Table of Contents

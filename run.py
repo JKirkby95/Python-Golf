@@ -170,10 +170,24 @@ def play_again():
                 )
 
 
+def title():
+    ascii_title = Fore.GREEN + r'''
+    '    ____          _    _                      ____         _   __ 
+    '   |  _ \  _   _ | |_ | |__    ___   _ __    / ___|  ___  | | / _|
+    '   | |_) || | | || __|| '_ \  / _ \ | '_ \  | |  _  / _ \ | || |_ 
+    '   |  __/ | |_| || |_ | | | || (_) || | | | | |_| || (_) || ||  _|
+    '   |_|     \__, | \__||_| |_| \___/ |_| |_|  \____| \___/ |_||_|  
+    '           |___/                                                  
+    ''' + Style.RESET_ALL
+    print(ascii_title)
+    time.sleep(5)
+
+
 def main():
     """
     This function runs the game and displays the outcome of the shots
     """
+    title()
     global total_score
     player_name = get_name()
     print(f"Hello {player_name}, welcome to Python Golf!\n")

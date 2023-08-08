@@ -251,7 +251,7 @@ def main():
 
         score = 0
         input("Press Enter to hit the shot...\n")
-
+        time.sleep(3)
         swing_message()
 
         if shot_outcome == "good_tee":
@@ -287,6 +287,7 @@ def main():
         approach_outcome = approach_shot()
 
         input("Press Enter to hit the approach shot...\n")
+        time.sleep(3)
         swing_message()
 
         if approach_outcome == "good_approach":

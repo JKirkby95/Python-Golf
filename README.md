@@ -96,9 +96,50 @@ to the correct sheet.
 - It then follows on with the rules of the game, I tried to make these
 eay to understand as I know not everyone is familiar with the rules of golf.
 
-- It outlines the club choice the user will have to make and explains 
+- It outlines the club choice the user will have to make and explains
 what each choice does and how it could affect their score.
 
 - Also explains the rule for the penalty applied when you enter a hazard.
 As this is slighty different to how a real game of golf would go.
+
+### Holes
+
+![holes](assets/images/holes.png)
+
+- The highlighted input asks the user to play 3,6 or 9 holes.
+
+- Depending on the users selection the program will send their
+data to the appropiate worksheet.
+
+- There is a title above each hole showing the user what hole they are currently on.
+
+### Club Selection
+
+![tee shot](assets/images/tee_shot.png)
+
+- The user is then prompted to select a club for the tee shot.
+
+- The driver has a greater chance at a great shot but also a greater chance at entering a hazard.
+
+- The iron is the safer shot, less chance at a great shot or hazards but a
+greater chance at hitting the fairway.
+
+- Entering the club you want only chooses the club, the user still has to press enter to hit the shot.
+
+### Shot Outcome
+
+![shot outcome](assets/images/shot_outcome.png)
+
+- After each shot there is a swing message that comes up.
+
+- The swing message is different depending on the type of shot.
+
+- I have also included a ascii art drawing to simulate a golfer swinging a club.
+
+- The outcome message is included below the ascii art, I have added color
+to the message to help the user determine the outcome. It's as simple as green
+is good and red is bad.
+
+
+
 

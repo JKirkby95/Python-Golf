@@ -24,6 +24,12 @@ The leaderboard workbook can be viewed [here.](https://docs.google.com/spreadshe
 2. [Features](#features)
     1. [Title screen](title-screen)
     2. [Rules](#rules)
+    3. [Holes](#holes)
+    4. [Club Selection](#club-selection)
+    5. [Shot Outcome](#shot-outcome)
+    6. [Putting](#putting)
+    7. [Game Summary](#game-summary)
+    
 
 ## User Experience
 
@@ -139,6 +145,60 @@ greater chance at hitting the fairway.
 - The outcome message is included below the ascii art, I have added color
 to the message to help the user determine the outcome. It's as simple as green
 is good and red is bad.
+
+- Above the outcome was bad , I've added a good outcome below to demonstrate.
+
+![good outcome](assets/images/good_outcome.png)
+
+### Putting 
+
+![putting start](assets/images/putt.png)
+
+- The user has no choice of club on the greens, the only club permitted is the putter.
+
+- So after the approach shot the user is prompted to press enter to hit their putt.
+
+![putt message](assets/images/putt_outcome.png)
+
+- There is a separate swing message for putting.
+
+- I have added a different ascii art piece for the putter. It displays a putter a ball and the hole.
+
+![short putt](assets/images/short_putt.png)
+
+- If the initial putt is missed the user will be hitting a short putt.
+
+- These type of putts have an increased probability of going in the hole.
+
+- There is a small chance you miss these putts.
+
+- In this case the user will be given a "gimme" as it's called in golf.
+ This means you don't have to hit the shot as it's so close to the hole.
+ But it will still count as a stroke. (see below)
+
+ ![short miss](assets/images/short_miss.png)
+
+ ### Game Summary
+
+ ![game summary](assets/images/game_summary.png)
+
+ - The game summary will display after you have played your last hole.
+
+ - It contains the user name, score on each hole, total number of holes played and the total score.
+
+ - It also asks the user to play again, which starts the program again from the start incase they would like to play more or less holes.
+
+ ### Hazard
+
+ ![hazard](assets/images/hazard.png)
+
+ - If the user ends up in a hazard it's not realistic to apply real golf rules to this,
+ so the user is just given a 1 stroke penalty. So if you hit the first shot into a hazard the 
+ next shot you take will be your third.
+
+ 
+
+
 
 
 

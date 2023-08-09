@@ -72,6 +72,9 @@ def approach_shot():
         choice = input(
             "Select which club you'd like to use. (wood/iron): \n"
             )
+        if choice not in ["wood", "iron"]:
+            print("Invalid input please select wood or iron.\n")
+
     if choice == "wood":
         outcome = random.choices(
             ["good_approach", "rough_approach",
@@ -235,7 +238,7 @@ def main():
     total_holes = ""
 
     while total_holes not in ["3", "6", "9"]:
-        total_holes = input(
+            total_holes = input(
             "How many holes do you want to play? (3, 6, or 9): \n"
         )
         if total_holes not in ["3", "6", "9"]:
@@ -387,11 +390,11 @@ def main():
     print(f"Total Score: {total_score}")
 
     row_data = [player_name, total_score]
-    if total_holes == 3:
+    if total_holes == "3":
         three_hole.append_row(row_data)
-    elif total_holes == 6:
+    elif total_holes == "6":
         six_hole.append_row(row_data)
-    elif total_holes == 9:
+    elif total_holes == "9":
         nine_hole.append_row(row_data)
 
 

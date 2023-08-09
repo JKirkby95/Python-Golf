@@ -282,7 +282,7 @@ Club selection |The user will be presented with an error if they enter anything 
 Score Counter |Score counter works as intended even when hazards are in play. | PASS
 Score Counter |If the first putt goes in the hole the rest of the main function is skipped and the score counts correctly. | PASS
 Play Again |Play again function works as intended. | PASS
-Leaderboard updated |The data is not currently being sent to the sheet correctly, it was working seemed to suddenly stop. I can see the request on the google cloud unfortunatly I may not get this fixed before submission. | FAIL
+Leaderboard updated |The data on the sheet updates as intended. | PASS
 
 ###  Bugs
 
@@ -290,9 +290,6 @@ Leaderboard updated |The data is not currently being sent to the sheet correctly
 
 - Most of which were to do with Python indenting, I now believe there are no bugs in the python code.
 
-- I'm dealing with an issue with the leaderboard at the moment , it seems to have stopped updating.
-I will be contacting tutor support but if it's not resolved I may have to submit this project with this bug
-which I'm very dissapointed about.
 
 [Back to top ⇧](#python-golf)
 

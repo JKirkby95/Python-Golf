@@ -238,7 +238,7 @@ def main():
     total_holes = ""
 
     while total_holes not in ["3", "6", "9"]:
-            total_holes = input(
+        total_holes = input(
             "How many holes do you want to play? (3, 6, or 9): \n"
         )
         if total_holes not in ["3", "6", "9"]:

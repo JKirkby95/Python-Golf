@@ -125,7 +125,6 @@ def swing_message():
     """
     print("Swinging the club....\n")
     print("The ball is in the air....\n")
-
     ascii_art1 = Fore.GREEN + r"""
        \                   .  .                        |>>>
         \              .         ' .                   |
